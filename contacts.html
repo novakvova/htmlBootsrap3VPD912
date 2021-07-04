@@ -70,8 +70,16 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="txtPhone">Телефон</label>
+                        <input type="text" class="form-control" id="txtPhone">
+                        <div class="invalid-feedback">
+                            Вкажіть телефон +xx(xxx)xxx-xx-xx
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="txtName">Дата народження</label>
-                        <input type="text" class="form-control" 
+                        <input type="text" class="form-control"
                                readonly
                                id="txtDateBirth">
                         <div class="invalid-feedback">
@@ -113,62 +121,8 @@
     <script src="js/imask.js"></script>
     <script src="/js/bootstrap-datepicker.min.js"></script>
     <script src="/js/bootstrap-datepicker.uk.min.js"></script>
-    <script>
-        window.onload = function () {
-            //let ivan = "Іван";
-            var btn = document.getElementById("btnClick");
-            var modalName = document.getElementById("modalName");
-            var txtName = document.getElementById("txtName");
-            var txtLastName = document.getElementById("txtLastName");
-            btn.onclick = function () {
-                var name = txtName.value;
-                var lastName = txtLastName.value;
-                var isValid = true;
-                if (name == "") {
-                    txtName.classList.add("is-invalid");
-                    isValid=false;
-                }
-                else {
-                    txtName.classList.remove("is-invalid");
-                }
-
-                if (lastName == "") {
-                    txtLastName.classList.add("is-invalid");
-                    isValid = false;
-                }
-                else {
-                    txtLastName.classList.remove("is-invalid");
-                }
-
-                if (isValid) {
-                    $("#modalInfo").modal("show");
-                    modalName.innerHTML = lastName+ " "+ name;
-                }
-                
-                //alert(txtName.value);
-            }
-        }
-                //alert(ivan);
-    </script>
-
-    <script>
-
-        //IMask(
-        //    document.getElementById("txtDateBirth"), {
-        //    mask: '00.00.0000'
-        //});
-
-        var dateObj = new Date();
-        var month = dateObj.getUTCMonth(); //months from 1-12
-        var day = dateObj.getUTCDate();
-        var year = dateObj.getUTCFullYear();
-
-        $('#txtDateBirth').datepicker({
-            format: "dd.mm.yyyy",
-            language: 'uk',
-            startDate: "01.01.1900",
-            endDate: `${day}.${month}.${year}`
-        });
-    </script>
+    <script src="/js/contact.js"></script>
+    <script src="/js/contact-datapicker.js"></script>
+  
 </body>
 </html>
