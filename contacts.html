@@ -86,6 +86,19 @@
                             Важіть дату народженя.
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="img/no-image.jpg"  width="100%" id="imgPhoto"/>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="fileImage" required>
+                                <label class="custom-file-label" for="fileImage">Оберіть файл...</label>
+                                <div class="invalid-feedback">Потрібно обрати файл</div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
 
                 <div class="mt-3" style="float:right">
@@ -124,5 +137,39 @@
     <script src="/js/contact.js"></script>
     <script src="/js/contact-datapicker.js"></script>
   
+    <script>
+        window.onload = function () {
+            var imgPhoto = document.getElementById("imgPhoto");
+            var fileImage = document.getElementById("fileImage");
+
+            fileImage.onchange = function (e) {
+                //вивсети інфомракці в веб бразер там де F12 Console
+                console.log("Ви обрали файл");
+                //console.log(e);
+                //список файлів, що обрав користувач
+                let files = e.target.files;
+                if (files && files[0]) { //якщо обрали файл
+                    let file = files[0];
+                    console.log(file);
+                    if (file.type.match(/^image\//)) { //перевірка чи це є фото
+                        const reader = new FileReader(); // для читання файлу
+                        reader.onload = function () {
+                            imgPhoto.src = reader.result; //отримали base64 і записали у фото
+                        };
+
+                        reader.readAsDataURL(file); //починаємо читати файл, який обрали
+                    }
+                    else {
+                        alert("Оберіть фото");
+                    }
+                }
+                else {
+                    alert("Оберіть файл");
+                }
+
+            }
+            
+        }
+    </script>
 </body>
 </html>
