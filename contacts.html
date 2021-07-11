@@ -96,8 +96,10 @@
                         <div class="col-md-9">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="fileImage" required>
-                                <label class="custom-file-label" for="fileImage">Оберіть файл...</label>
-                                <div class="invalid-feedback">Потрібно обрати файл</div>
+                                <label class="custom-file-label" for="fileImage" id="labelfileImage">
+                                    Оберіть файл...
+                                </label>
+                                <div class="invalid-feedback">Потрібно обрати фото</div>
                             </div>
                         </div>
                     </div>
@@ -153,10 +155,12 @@
                 if (files && files[0]) { //якщо обрали файл
                     let file = files[0];
                     console.log(file);
+                    document.getElementById("labelfileImage").innerHTML = file.name;
                     if (file.type.match(/^image\//)) { //перевірка чи це є фото
                         const reader = new FileReader(); // для читання файлу
                         reader.onload = function () {
                             imgPhoto.src = reader.result; //отримали base64 і записали у фото
+                            document.getElementById("imgBase64").value = reader.result;
                         };
 
                         reader.readAsDataURL(file); //починаємо читати файл, який обрали

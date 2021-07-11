@@ -16,6 +16,10 @@
     //вибір телефону
     var txtPhone = document.getElementById("txtPhone");
 
+    var fileImage = document.getElementById("fileImage");
+
+    var imgBase64 = document.getElementById("imgBase64");
+
     //для поля телефон робимо маску
     IMask(
         txtPhone, {
@@ -45,7 +49,18 @@
     }
 
     btn.onclick = function () {
+
+        //showError(fileImage);
+
         var isValid = true;
+        if (imgBase64.value == "") {
+            showError(fileImage);
+            isValid = false;
+        }
+        else {
+            showSuccess(fileImage);
+        }
+
         if (txtName.value == "") {
             showError(txtName);
             isValid = false;
