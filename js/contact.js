@@ -1,4 +1,4 @@
-﻿window.onload = function () {
+﻿window.addEventListener("load", function () {
 
     //регекс для телефону
     const regex_phone = /^(?=\+?([0-9]{2})\(?([0-9]{3})\)?([0-9]{3})-?([0-9]{2})-?([0-9]{2})).{17}$/;
@@ -88,4 +88,4 @@
         input.classList.remove("is-invalid");
         input.classList.add("is-valid");
     }
-}
+});

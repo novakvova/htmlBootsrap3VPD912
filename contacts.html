@@ -61,6 +61,8 @@
                         </div>
                     </div>
 
+                    <input type="hidden" id="imgBase64" />
+
                     <div class="form-group">
                         <label for="txtName">Ім'я</label>
                         <input type="text" class="form-control" id="txtName">
@@ -138,7 +140,7 @@
     <script src="/js/contact-datapicker.js"></script>
   
     <script>
-        window.onload = function () {
+        window.addEventListener("load", function () {
             var imgPhoto = document.getElementById("imgPhoto");
             var fileImage = document.getElementById("fileImage");
 
@@ -168,8 +170,8 @@
                 }
 
             }
-            
-        }
+
+        });
     </script>
 </body>
 </html>
